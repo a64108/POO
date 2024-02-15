@@ -22,4 +22,4 @@ if len(n1) == 1:    # verifica se ha um caracter
     else:
         print("É uma consoante.")
 else:
-    print("Please enter only a single character.")
+    print("Por favor meta só um caracter.")
