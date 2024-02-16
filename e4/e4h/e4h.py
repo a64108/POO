@@ -28,3 +28,7 @@ print(" Os caracteres entre 10 e 20 (inclusive):",texto[10:21])
 print("Lista em ordem reversa:", texto[::-1])
 
 
+conjunto = ["a","b","c"]
+uniao = texto + conjunto
+print("União com ['a','b'','c']:", uniao)
+
