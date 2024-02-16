@@ -24,7 +24,7 @@ texto.remove (20)
 
 print(" Os primeiros 10 caracteres:",texto[:10])
 print(" Os ultimos 10 caracteres: ",texto[40:])
-print(" Os caracteres entre 10 e 20 (inclusive):",texto[10:21])
+print(" Os caracteres entre 10 e 20 (inclusive):",texto[9:20])
 print("Lista em ordem reversa:", texto[::-1])
 
 
