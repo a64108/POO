@@ -1,37 +1,8 @@
-# ========================================================================
-# UALG - POO 
-# Aluno - 64108
-# Exercicio - 9
-# ========================================================================
-
-# Implemente as classes apresentadas no diagrama UML da Figura 1.
-
-#   Utilize o Visual Studio Code ou outro IDE avançado.
-
-#   Este diagrama foi escrito segundo as convenções do UML, por isso são necessárias algumas adaptações para a implementação em Python:
-
-#       Os nomes de atributos e métodos devem ser escritos no formato PEP8 – ou seja – em minúsculas, com as palavras separadas por _ (e.g., print_owner()).
-
-#       Os getters e setters dos atributos devem ser implementados como properties, através de decoradores (em vez de funções get e set).
-
-#           Quando se usam properties para encapsular atributos de classes, estes devem ser declarados como privados, ou seja, com um prefixo __ (e.g., self.__forename).
-
-#   Crie um programa que permita, de modo interativo: listar, inserir, remover, e editar carros de uma lista (veja o exemplo em baixo).
-
-#       Crie também uma opção para gravar essa lista num ficheiro (e.g., veja o módulo pickle).
-
-
-# ========================================================================
-
-# MAIN
-
-# Tem de se mudar as variaveis
-# printOwner() --> print_owner() 
-
-# Tudo o que for "get" out "set" vão ser implementadas a partir de decoradores
-
-# propriedades têm de ser privadas em com __nome
-
+#!/usr/bin/env python3
+"""
+@date Feb 15 2024
+@authors: pcardoso, j-a-martins
+"""
 
 from car import Car
 from person import Person
@@ -70,30 +41,65 @@ def main():
         match op:
             case "p1":
                 # TODO: inputs
-                new_person = Person()
+                forename = input("Enter forename: ")
+                surname = input("Enter surname: ")
+                address = input("Enter address: ")
+                cc = input("Enter credit card number: ")
+                phone = input("Enter phone number: ")
+
+                new_person = Person(forename, surname, address, cc, phone)
                 list_of_persons.append(new_person)
+                print("New person added!")
 
             case "p2":
                 print_list(list_of_persons)
 
+
             case "e1":
                 # TODO: inputs
-                new_engine = Engine()
+                fuel = input("Enter fuel: ")
+                horse_power = float(input("Enter horse power: "))
+                torque = input("Enter torque: ")
+                displacement = input("Enter displacement: ")
+                number_cylinders = float(input("Enter number cylinders: "))
+                starting_system = input("Enter starting system: ")
+                dry_weight = input("Enter dry weight: ")
+                manufacturer = input("Enter manufacturer: ")
+                
+                new_engine = Engine(fuel, horse_power, torque, displacement, number_cylinders, starting_system, dry_weight, manufacturer)
                 list_of_engines.append(new_engine)
+                print("New engine added!")
 
             case "e2":
                 print_list(list_of_engines)
 
+
             case "c1":
-                new_color = Color()
-                list_of_colors.append(new_color)
+                
+                color_name = input("Enter color: ")
+                RGB = input("Enter color RGB: ")
+                
+                new_color = Color(color_name, RGB)
+                list_of_colors.append(new_color)  # noqa: F823
+                print("New color added!")
 
             case "c2":
                 print_list(list_of_colors)
 
+
             case "v1":
                 # TODO: inputs
-                new_vehicle()
+                owner = input("Enter owner: ")
+                color = input("Enter color: ")
+                engine = input("Enter engine: ")
+                brand = input("Enter brand: ")
+                model = input("Enter model: ")
+                consumption = float(input("Enter consumption: "))
+                kms = float(input("Enter kms: "))
+                
+                new_car = Car(owner, color, engine, brand, model, consumption, kms)
+                list_of_cars.append(new_car)
+                print("New car added!")
 
             case "v2":
                 print_list(list_of_cars)
@@ -120,23 +126,28 @@ def ask_id(msg, input_list):
     return int(input(msg))
 
 
-def new_vehicle():
+def new_car():
     person_id = ask_id("Person id? ", list_of_persons)
     color_id = ask_id("What is the Color? ", list_of_colors)
     engine_id = ask_id("Engine id? ", list_of_engines)
 
+    brand = input("Enter the car brand: ")
+    model = input("Enter the car model: ")
+    consumption = float(input("Enter the fuel consumption (km/l): "))
+    kms = float(input("Enter the current kilometers on the car: "))
+    
     new_car = Car(
         owner=list_of_persons[person_id],
         color=list_of_colors[color_id],
         engine=list_of_engines[engine_id],
-        brand="???",  # TODO
-        model="???",  # TODO
-        consumption=-1,  # TODO
-        kms=-1,  # TODO
+        brand=brand,
+        model=model,
+        consumption=consumption,
+        kms=kms,
     )
 
     list_of_cars.append(new_car)
-
+    print("New car added!")
 
 # Only runs if this file is executed directly
 if __name__ == "__main__":

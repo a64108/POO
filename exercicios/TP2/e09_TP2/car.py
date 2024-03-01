@@ -1,8 +1,8 @@
-# ========================================================================
-# UALG - POO 
-# Aluno - 64108
-# Exercicio - 9
-# ========================================================================
+#!/usr/bin/env python3
+"""
+@date Feb 15 2024
+@authors: pcardoso, j-a-martins
+"""
 
 from person import Person
 from color import Color
@@ -17,6 +17,9 @@ class Car:
         assert isinstance(engine, Engine)
 
         # Define the properties
+        self.owner = owner
+        self.color = color
+        self.engine = engine
         self.brand = brand
         self.model = model
         self.consumption = consumption

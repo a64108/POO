@@ -1,13 +1,16 @@
-# ========================================================================
-# UALG - POO 
-# Aluno - 64108
-# Exercicio - 9
-# ========================================================================
+#!/usr/bin/env python3
+"""
+@date Feb 15 2024
+@authors: pcardoso, j-a-martins
+"""
 
 
 class Color:
     # TODO: see UML
-    pass
+    def __init__(self, color_name, RGB):
+        
+        self.color_name = color_name
+        self.RGB = RGB
 
 
 # Only runs if this file is executed directly
