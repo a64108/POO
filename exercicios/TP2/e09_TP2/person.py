@@ -51,7 +51,7 @@ class Person:
 
 # New person
         d = (input('Insert Forename:'))
-        person.set_forename(d)
+        person.set_forename
 
         d = (input('Insert Surname:'))
         person.set_surname
