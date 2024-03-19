@@ -13,10 +13,10 @@ class Color:
         self.b = b
         
         
-# Getter ,setter e deleter de nome da cor
+# Getter e setter abaixo (como fazer o owner)
 
     @property
-    def color_name(self):  
+    def color_name(self):  # este é um getter
         """Retorna o nome da cor."""
         print('Getter: cor acedida')
         return self.__color_name
@@ -33,10 +33,9 @@ class Color:
         print('Deleter: cor apagada')
         self.__color_name = None
 
-# Getter ,setter e deleter de rgb
 
     @property
-    def rgb(self):
+    def rgb(self):  # este é um getter
         """Retorna o valor RGB."""
         return self.__r, self.__g, self.__b
   

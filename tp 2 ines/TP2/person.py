@@ -16,10 +16,9 @@ class Person:
         self.phone = phone
         
 
-# Getter ,setter e deleter do primerio nome da pessoa
 
     @property
-    def forename(self): 
+    def forename(self):  # este é um getter
         """Retorna o nome da pessoa."""
         print('Getter: nome acedido')
         return self.__forename
@@ -36,10 +35,10 @@ class Person:
         print('Deleter: nome apagado')
         self.__forename = None
         
-  # Getter ,setter e deleter do apelido da pessoa     
+        
         
     @property
-    def surname(self):
+    def surname(self):  # este é um getter
         """Retorna o sobrenome da pessoa."""
         print('Getter: nome acedido')
         return self.__forename
@@ -56,10 +55,10 @@ class Person:
         print('Deleter: sobrenome apagado')
         self.__surname = None        
         
-# Getter ,setter e deleter da morada        
+        
         
     @property
-    def address(self):
+    def address(self):  # este é um getter
         """Retorna a morada da pessoa."""
         print('Getter: morada acedida')
         return self.__address
@@ -76,10 +75,10 @@ class Person:
         print('Deleter: morada apagada')
         self.__address = None  
         
-# Getter ,setter e deleter do cartao de credito     
+        
         
     @property
-    def cc(self): 
+    def cc(self):  # este é um getter
         """Retorna o cartão de crédito da pessoa."""
         print('Getter: cartão de crédito acedido')
         return self.__cc
@@ -96,10 +95,10 @@ class Person:
         print('Deleter: cartão de crédito apagado')
         self.__cc = None        
         
-# Getter ,setter e deleter do numero de telefone
+
 
     @property
-    def phone(self):
+    def phone(self):  # este é um getter
         """Retorna o número telémovel da pessoa."""
         print('Getter: número telémovel acedido')
         return self.__phone

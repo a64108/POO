@@ -9,10 +9,11 @@ from color import Color
 from engine import Engine
 
 
+
 class Car:
     def __init__(self, owner, color, engine, brand, model, consumption, kms):
+        # Verify the argument types
 
-        # Define as propriedades
         self.owner = owner
         self.color = color
         self.engine = engine
@@ -21,10 +22,10 @@ class Car:
         self.consumption = consumption
         self.kms = kms
 
-# Getter ,setter e deleter de owner
+# Getter e setter abaixo (como fazer o owner)
     
     @property
-    def owner(self):
+    def owner(self):  # este é um getter
         """Retorna o dono do carro."""
         print('Getter: dono acedida')
         return self.__owner
@@ -41,11 +42,9 @@ class Car:
         print('Deleter: dono apagado')
         self.__cor = None
         
-
-# Getter ,setter e deleter de color
-                
+        
     @property
-    def color(self):
+    def color(self):  # este é um getter
         """Retorna a cor do carro."""
         print('Getter: cor acedida')
         return self.__cor
@@ -62,8 +61,7 @@ class Car:
         print('Deleter: cor apagada')
         self.__color = None
     
-# Getter ,setter e deleter de engine
-            
+    
     @property
     def engine(self):  # este é um getter
         """Retorna o motor do carro."""
@@ -82,10 +80,9 @@ class Car:
         print('Deleter: motor apagado')
         self.__engine = None
     
-# Getter ,setter e deleter de marca    
-
+    
     @property
-    def brand(self):
+    def brand(self):  # este é um getter
         """Retorna a marca do carro."""
         print('Getter: marca acedida')
         return self.__brand
@@ -102,10 +99,9 @@ class Car:
         print('Deleter: marca apagada')
         self.__brand = None
     
-    # Getter ,setter e deleter de modelo
-
+    
     @property
-    def model(self):
+    def model(self):  # este é um getter
         """Retorna o modelo do carro."""
         print('Getter: modelo acedido')
         return self.__model
@@ -122,10 +118,9 @@ class Car:
         print('Deleter: modelo apagado')
         self.__model = None    
     
-# Getter ,setter e deleter de consumo
 
     @property
-    def consumption(self):
+    def consumption(self):  # este é um getter
         """Retorna o consumo do carro."""
         print('Getter: consumo acedido')
         return self.__consumption
@@ -141,11 +136,10 @@ class Car:
         """Coloca o consumo do carro a None."""
         print('Deleter: consumo apagado')
         self.__consumption = None 
-
-    # Getter ,setter e deleter de kms 
+        
            
     @property
-    def kms(self):
+    def kms(self):  # este é um getter
         """Retorna os kms do carro."""
         print('Getter: kms acedidos')
         return self.__ckms
@@ -165,4 +159,5 @@ class Car:
 
 def __str__(self):
     return f"Owner: {self.owner} Color: {self.color}, Engine: {self.engine}, Brand: {self.brand}, Model: {self.model}, Consumption: {self.consumption}, Kms: {self.kms}"
+
 

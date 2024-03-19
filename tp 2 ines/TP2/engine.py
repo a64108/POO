@@ -19,10 +19,9 @@ class Engine:
         self.manufacturer = manufacturer
 
 
-# Getter ,setter e deleter do tipo de combustivel
 
     @property
-    def fuel(self): 
+    def fuel(self):  # este é um getter
         """Retorna o combustivel do carro."""
         print('Getter: combustivel acedido')
         return self.__fuel
@@ -39,10 +38,10 @@ class Engine:
         print('Deleter: combustivel apagado')
         self.__fuel = None
         
- # Getter ,setter e deleter de horse power       
+        
 
     @property
-    def horse_power(self): 
+    def horse_power(self):  # este é um getter
         """Retorna a potência em cavalos do carro."""
         print('Getter: potência em cavalos acedido')
         return self.__horse_power
@@ -59,10 +58,10 @@ class Engine:
         print('Deleter: potência em cavalos apagado')
         self.__horse_power = None
 
-# Getter ,setter e deleter de torque
+
 
     @property
-    def torque(self): 
+    def torque(self):  # este é um getter
         """Retorna o torque do carro."""
         print('Getter: torque acedido')
         return self.__torque
@@ -79,12 +78,12 @@ class Engine:
         print('Deleter: torque apagado')
         self.__torque = None
 
-# Getter ,setter e deleter deslocaçao de liquido
+
 
     @property
-    def displacement(self):
-        """Retorna a "liquid displacement" de um veiculo aquatico."""
-        print('Getter: Liquid Displacement')
+    def displacement(self):  # este é um getter
+        """Retorna o deslocamento do carro."""
+        print('Getter: deslocamento acedido')
         return self.__displacement
 
     @displacement.setter
@@ -99,10 +98,10 @@ class Engine:
         print('Deleter: deslocamento apagado')
         self.__displacement = None
 
-# Getter ,setter e deleter do numero de cilindros
+
 
     @property
-    def number_cylinders(self):
+    def number_cylinders(self):  # este é um getter
         """Retorna o número de cilindros do carro."""
         print('Getter: número de cilindros acedido')
         return self.__number_cylinders
@@ -119,10 +118,10 @@ class Engine:
         print('Deleter: número de cilindros apagado')
         self.__number_cylinders = None
         
-    # Getter ,setter e deleter do sistema de igniçao    
+        
         
     @property
-    def starting_system(self):
+    def starting_system(self):  # este é um getter
         """Retorna o ínicio do sistema do carro."""
         print('Getter: ínicio do sistema acedido')
         return self.__starting_system
@@ -139,10 +138,10 @@ class Engine:
         print('Deleter: ínicio do sistema apagado')
         self.__starting_system = None
         
-# Getter ,setter e deleter do peso
+
 
     @property
-    def dry_weight(self): 
+    def dry_weight(self):  # este é um getter
         """Retorna o dry weight do carro."""
         print('Getter: dry weight acedido')
         return self.__dry_weight
@@ -159,10 +158,10 @@ class Engine:
         print('Deleter: dry weight apagado')
         self.__dry_weight = None
 
-# Getter ,setter e deleter da empresa que fez o veiculo
+
 
     @property
-    def manufacturer(self): 
+    def manufacturer(self):  # este é um getter
         """Retorna o fabricante do carro."""
         print('Getter: fabricante acedido')
         return self.__manufacturer
