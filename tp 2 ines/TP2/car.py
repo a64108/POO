@@ -4,16 +4,9 @@
 @authors: pcardoso, j-a-martins
 """
 
-from person import Person
-from color import Color
-from engine import Engine
-
-
-
 class Car:
     def __init__(self, owner, color, engine, brand, model, consumption, kms):
         # Verify the argument types
-
         self.owner = owner
         self.color = color
         self.engine = engine
@@ -40,14 +33,14 @@ class Car:
     def owner(self):
         """Coloca dono do carro a None."""
         print('Deleter: dono apagado')
-        self.__cor = None
+        self.__color = None
         
         
     @property
     def color(self):  # este é um getter
         """Retorna a cor do carro."""
         print('Getter: cor acedida')
-        return self.__cor
+        return self.__color
 
     @color.setter
     def color(self, color):
@@ -142,7 +135,7 @@ class Car:
     def kms(self):  # este é um getter
         """Retorna os kms do carro."""
         print('Getter: kms acedidos')
-        return self.__ckms
+        return self.__kms
 
     @kms.setter
     def kms(self, kms):
@@ -157,7 +150,9 @@ class Car:
         self.__kms = None 
         
 
-def __str__(self):
-    return f"Owner: {self.owner} Color: {self.color}, Engine: {self.engine}, Brand: {self.brand}, Model: {self.model}, Consumption: {self.consumption}, Kms: {self.kms}"
+    def __str__(self):
+        return f"Owner: {self.owner} Color: {self.color}, Engine: {self.engine}, Brand: {self.brand}, Model: {self.model}, Consumption: {self.consumption}, Kms: {self.kms}"
 
 
+if __name__ == "__main__":
+    Car()

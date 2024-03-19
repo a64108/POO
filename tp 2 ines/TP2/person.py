@@ -116,7 +116,8 @@ class Person:
         self.__phone = None         
     
   
-def __str__(self): 
-    return f"Forename: {self.forename}, Surname: {self.surname}, Address: {self.address}, Credit Card: {self.cc}, Phone Number: {self.phone_number}" 
+    def __str__(self): 
+        return f"Forename: {self.forename}, Surname: {self.surname}, Address: {self.address}, Credit Card: {self.cc}, Phone Number: {self.phone}" 
   
-
+if __name__ == "__main__":
+    Person()

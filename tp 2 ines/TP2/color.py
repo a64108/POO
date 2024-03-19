@@ -58,6 +58,8 @@ class Color:
         print('Deleter: valor apagado')
         self.__r = self.__g = self.__b = None
 
-def __str__(self):
-    return f"Color Name: {self.color_name}, Valor RGB: {self.__rgb}"
+    def __str__(self):
+        return f"Color Name: {self.color_name}, Valor RGB: ({self.r}, {self.g}, {self.b})"
 
+if __name__ == "__main__":
+    Color()

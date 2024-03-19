@@ -179,7 +179,8 @@ class Engine:
         self.__manufacturer = None
         
  
-def __str__(self):
-    return f"Fuel: {self.fuel}, Horse Power: {self.horse_power}, Torque: {self.torque}, Displacement: {self.displacement},  Number Cylinders: {self.number_cylinders}, Starting System: {self.starting_system}, Dry Weight: {self.dry_weight}, Manufacturer: {self.manufacturer}"
+    def __str__(self):
+        return f"Fuel: {self.fuel}, Horse Power: {self.horse_power}, Torque: {self.torque}, Displacement: {self.displacement},  Number Cylinders: {self.number_cylinders}, Starting System: {self.starting_system}, Dry Weight: {self.dry_weight}, Manufacturer: {self.manufacturer}"
 
-
+if __name__ == "__main__":
+    Engine()

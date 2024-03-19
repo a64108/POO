@@ -3,25 +3,24 @@
 @date Feb 15 2024
 @authors: pcardoso, j-a-martins
 """
+import pickle
 
 from car import Car
 from person import Person
 from color import Color
 from engine import Engine
-import pickle
+
  
-    
 list_of_persons = []
 list_of_engines = []
 list_of_colors = []
 list_of_cars = []
 
-
-def main():
+def main():    
     list_of_persons = []
     list_of_engines = []
     list_of_colors = []
-    list_of_cars = []
+    list_of_cars = []  
     
     while True:
         print("Menu")
@@ -60,10 +59,10 @@ def main():
 
             case "e1":
                 fuel = input("Enter fuel: ")
-                horse_power = float(input("Enter horse power: "))
+                horse_power = input("Enter horse power: ")
                 torque = input("Enter torque: ")
                 displacement = input("Enter displacement: ")
-                number_cylinders = float(input("Enter number cylinders: "))
+                number_cylinders = input("Enter number cylinders: ")
                 starting_system = input("Enter starting system: ")
                 dry_weight = input("Enter dry weight: ")
                 manufacturer = input("Enter manufacturer: ")
@@ -173,6 +172,6 @@ def new_car():
     list_of_cars.append(new_car)
     print("New car added!")
 
-# Only runs if this file is executed directly
+
 if __name__ == "__main__":
     main()
