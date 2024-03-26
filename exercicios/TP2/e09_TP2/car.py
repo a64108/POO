@@ -11,8 +11,7 @@ from engine import Engine
 
 class Car:
     def __init__(self, owner, color, engine, brand, model, consumption, kms):
-
-        # Define as propriedades
+        
         self.owner = owner
         self.color = color
         self.engine = engine
@@ -21,148 +20,156 @@ class Car:
         self.consumption = consumption
         self.kms = kms
 
-# Getter ,setter e deleter de owner
+# Getter, setter e deleter de owner
     
     @property
     def owner(self):
         """Retorna o dono do carro."""
-        print('Getter: dono acedida')
+        print('Getter: Owner Acedido')
         return self.__owner
 
     @owner.setter
     def owner(self, owner):
-        """Define o dono do carro."""
+        """Define o owner do veiculo."""
         self.__owner = owner
-        print('Setter: Dono definida')
+        print('Setter: Owner Definido')
 
     @owner.deleter
     def owner(self):
-        """Coloca dono do carro a None."""
-        print('Deleter: dono apagado')
-        self.__cor = None
+        """Coloca Owner do veiculo a None."""
+        print('Deleter: Owner Apagado')
+        self.__color = None
         
 
-# Getter ,setter e deleter de color
+# Getter, setter e deleter de color
                 
     @property
     def color(self):
-        """Retorna a cor do carro."""
-        print('Getter: cor acedida')
-        return self.__cor
+        """Retorna a cor do veiculo."""
+        print('Getter: Color Acedida')
+        return self.__color
 
     @color.setter
     def color(self, color):
-        """Define a cor do carro."""
+        """Define a cor do veiculo."""
         self.__color = color
-        print('Setter: cor definida')
+        print('Setter: Color Definida')
 
     @color.deleter
     def color(self): 
         """Coloca cor do carro a None."""
-        print('Deleter: cor apagada')
+        print('Deleter: color Apagada')
         self.__color = None
     
-# Getter ,setter e deleter de engine
-            
+
+# Getter, setter e deleter de engine
+
     @property
-    def engine(self):  # este é um getter
-        """Retorna o motor do carro."""
-        print('Getter: motor acedido')
+    def engine(self):
+        """Retorna o modelo motor do veiculo."""
+        print('Getter: Motor Acedido')
         return self.__engine
 
     @engine.setter
     def engine(self, engine):
-        """Define o motor do carro."""
+        """Define o modelo do motor do carro."""
         self.__engine = engine
-        print('Setter: motor definido')
+        print('Setter: Motor Definido')
 
     @engine.deleter
     def engine(self):  
         """Coloca o motor do carro a None."""
-        print('Deleter: motor apagado')
+        print('Deleter: Motor Apagado')
         self.__engine = None
     
-# Getter ,setter e deleter de marca    
+
+# Getter, setter e deleter de brand
 
     @property
     def brand(self):
-        """Retorna a marca do carro."""
-        print('Getter: marca acedida')
+        """Retorna a marca do veiculo."""
+        print('Getter: Brand Acedida')
         return self.__brand
 
     @brand.setter
     def brand(self, brand):
-        """Define o marca do carro."""
+        """Define o brand do veiculo."""
         self.__brand = brand
-        print('Setter: marca definida')
+        print('Setter: Brand Definida')
 
     @brand.deleter
     def brand(self): 
         """Coloca o marca do carro a None."""
-        print('Deleter: marca apagada')
+        print('Deleter: Brand Apagada')
         self.__brand = None
     
-    # Getter ,setter e deleter de modelo
+
+# Getter, setter e deleter de model
 
     @property
     def model(self):
         """Retorna o modelo do carro."""
-        print('Getter: modelo acedido')
+        print('Getter: Model Acedido')
         return self.__model
 
     @model.setter
     def model(self, model):
-        """Define o modelo do carro."""
+        """Define o modelo do veiculo."""
         self.__model = model
-        print('Setter: modelo definido')
+        print('Setter: Modelo Definido')
 
     @model.deleter
     def model(self):  
         """Coloca o modelo do carro a None."""
-        print('Deleter: modelo apagado')
+        print('Deleter: Modelo Apagado')
         self.__model = None    
     
-# Getter ,setter e deleter de consumo
+
+# Getter, setter e deleter de consumption
 
     @property
     def consumption(self):
-        """Retorna o consumo do carro."""
-        print('Getter: consumo acedido')
+        """Retorna o consumo do veiculo."""
+        print('Getter: Consumo Acedido')
         return self.__consumption
 
     @consumption.setter
     def consumption(self, consumption):
         """Define o consumo do carro."""
         self.__consumption = consumption
-        print('Setter: consumo definido')
+        print('Setter: Consumo Definido')
 
     @consumption.deleter
     def consumption(self):  
-        """Coloca o consumo do carro a None."""
-        print('Deleter: consumo apagado')
+        """Coloca o consumo do veiculo a None."""
+        print('Deleter: Consumo Apagado')
         self.__consumption = None 
+        
 
-    # Getter ,setter e deleter de kms 
-           
+# Getter, setter e deleter de kms
+
     @property
     def kms(self):
-        """Retorna os kms do carro."""
-        print('Getter: kms acedidos')
-        return self.__ckms
+        """Retorna os kms do veiculo."""
+        print('Getter: KMs Acedidos')
+        return self.__kms
 
     @kms.setter
     def kms(self, kms):
-        """Define os kms do carro."""
+        """Define os kms do veiculo."""
         self.__kms = kms
-        print('Setter: kms definidos')
+        print('Setter: KMs Definidos')
 
     @kms.deleter
     def kms(self):  
-        """Coloca o consumo do carro a None."""
-        print('Deleter: kms apagados')
+        """Coloca o consumo do veiculo a None."""
+        print('Deleter: KMs Apagados')
         self.__kms = None 
         
 
-def __str__(self):
-    return f"Owner: {self.owner} Color: {self.color}, Engine: {self.engine}, Brand: {self.brand}, Model: {self.model}, Consumption: {self.consumption}, Kms: {self.kms}"
+    def __str__(self):
+        return f"Owner: {self.owner} Color: {self.color}, Engine: {self.engine}, Brand: {self.brand}, Model: {self.model}, Consumption: {self.consumption}, Kms: {self.kms}"
 
+
+if __name__ == "__main__":
+    Car()

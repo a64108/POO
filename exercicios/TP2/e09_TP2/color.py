@@ -13,39 +13,40 @@ class Color:
         self.b = b
         
         
-# Getter ,setter e deleter de nome da cor
+# Getter, setter e deleter de color
 
     @property
-    def color_name(self):  
-        """Retorna o nome da cor."""
+    def color_name(self):
+        """Retorna o nome da color."""
         print('Getter: cor acedida')
         return self.__color_name
 
     @color_name.setter
     def color_name(self, color_name):
-        """Define o nome da cor"""
+        """Define o nome da color"""
         self.__color_name = color_name
         print('Setter: cor definida')
 
     @color_name.deleter
     def color_name(self): 
-        """Coloca o nome da cor a None."""
+        """Coloca o nome da color a None."""
         print('Deleter: cor apagada')
         self.__color_name = None
 
-# Getter ,setter e deleter de rgb
+
+# Getter, setter e deleter de codigo rgb
 
     @property
     def rgb(self):
-        """Retorna o valor RGB."""
+        """Retorna o valor do RGB."""
         return self.__r, self.__g, self.__b
   
   
     @rgb.setter
     def rgb(self, rgb):
-        """Define o valor RGB"""
+        """Define o valor do RGB"""
         r, g, b = rgb
-        if isinstance(r, int) and isinstance(g, int) and isinstance(b, int) and 0 <= r <= 255 and 0 <= g <= 255 and 0 <= b <= 255:
+        if isinstance(r, int) and isinstance(g, int) and isinstance(b, int) and 0 <= r <= 255 and 0 <= g <= 255 and 0 <= b <= 255: # verifica se foram colocados numeros e entre os valores 0 e 255
             self.__r = r
             self.__g = g
             self.__b = b
@@ -55,10 +56,12 @@ class Color:
 
     @rgb.deleter
     def rgb(self): 
-        """Coloca o valor da cor a None."""
-        print('Deleter: valor apagado')
+        """Coloca o valor da color a None."""
+        print('Deleter: RGB Color Apagado')
         self.__r = self.__g = self.__b = None
 
-def __str__(self):
-    return f"Color Name: {self.color_name}, Valor RGB: {self.__rgb}"
+    def __str__(self):
+        return f"Color Name: {self.color_name}, Valor RGB: ({self.r}, {self.g}, {self.b})"
 
+if __name__ == "__main__":
+    Color()

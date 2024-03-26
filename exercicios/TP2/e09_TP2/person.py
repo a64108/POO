@@ -16,70 +16,76 @@ class Person:
         self.phone = phone
         
 
-# Getter ,setter e deleter do primerio nome da pessoa
+# Getter, setter e deleter de forename
 
     @property
-    def forename(self): 
+    def forename(self):
         """Retorna o nome da pessoa."""
-        print('Getter: nome acedido')
+        print('Getter: Nome Acedido')
         return self.__forename
 
     @forename.setter
     def forename(self, forename):
         """Define o nome da pessoa."""
         self.__forename = forename
-        print('Setter: nome definido')
+        print('Setter: Nome Definido')
 
     @forename.deleter
     def forename(self):
         """Coloca nome da pessoa a None."""
-        print('Deleter: nome apagado')
+        print('Deleter: Nome Apagado')
         self.__forename = None
         
-  # Getter ,setter e deleter do apelido da pessoa     
+
+
+# Getter, setter e deleter de surname
         
     @property
     def surname(self):
         """Retorna o sobrenome da pessoa."""
-        print('Getter: nome acedido')
-        return self.__forename
+        print('Getter: Sobrenome Acedido')
+        return self.__surname
 
     @surname.setter
     def surname(self, surname):
         """Define o sobrenome da pessoa."""
         self.__surname = surname
-        print('Setter: sobrenome definido')
+        print('Setter: Sobrenome Definido')
 
     @surname.deleter
     def surname(self):
         """Coloca sobrenome da pessoa a None."""
-        print('Deleter: sobrenome apagado')
+        print('Deleter: Sobrenome Apagado')
         self.__surname = None        
         
-# Getter ,setter e deleter da morada        
         
+
+# Getter, setter e deleter de address
+
     @property
     def address(self):
-        """Retorna a morada da pessoa."""
-        print('Getter: morada acedida')
+        """Retorna a morada."""
+        print('Getter: Morada Acedida')
         return self.__address
 
     @address.setter
     def address(self, address):
-        """Define a  morada da pessoa."""
+        """Define a Morada."""
         self.__address = address
-        print('Setter: morada definida')
+        print('Setter: Morada Definida')
 
     @address.deleter
     def address(self):
         """Coloca a morada da pessoa a None."""
-        print('Deleter: morada apagada')
+        print('Deleter: Morada Apagada')
         self.__address = None  
         
-# Getter ,setter e deleter do cartao de credito     
         
+
+# Getter, setter e deleter de credit card
+
     @property
-    def cc(self): 
+    def cc(self):
         """Retorna o cartão de crédito da pessoa."""
         print('Getter: cartão de crédito acedido')
         return self.__cc
@@ -96,28 +102,31 @@ class Person:
         print('Deleter: cartão de crédito apagado')
         self.__cc = None        
         
-# Getter ,setter e deleter do numero de telefone
+
+
+# Getter, setter e deleter de phone number
 
     @property
     def phone(self):
         """Retorna o número telémovel da pessoa."""
-        print('Getter: número telémovel acedido')
+        print('Getter: Número Telefone Acedido')
         return self.__phone
 
     @phone.setter
     def phone(self, phone):
-        """Define o número telémovel da pessoa."""
+        """Define o número telefone."""
         self.__phone = phone
-        print('Setter: número telémovel definido')
+        print('Setter: Número Telefone Definido')
 
     @phone.deleter
     def phone(self):
-        """Coloca o número telémovel da pessoa a None."""
-        print('Deleter: número telémovel apagado')
+        """Coloca o número telefone a None."""
+        print('Deleter: Número telefone Apagado')
         self.__phone = None         
     
   
-def __str__(self): 
-    return f"Forename: {self.forename}, Surname: {self.surname}, Address: {self.address}, Credit Card: {self.cc}, Phone Number: {self.phone_number}" 
+    def __str__(self): 
+        return f"Forename: {self.forename}, Surname: {self.surname}, Address: {self.address}, Credit Card: {self.cc}, Phone Number: {self.phone}" 
   
-
+if __name__ == "__main__":
+    Person()

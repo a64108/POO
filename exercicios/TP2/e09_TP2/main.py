@@ -45,7 +45,6 @@ def main():
 
         match op:
             case "p1":
-                # TODO: inputs
                 forename = input("Enter forename: ")
                 surname = input("Enter surname: ")
                 address = input("Enter address: ")
@@ -61,12 +60,11 @@ def main():
 
 
             case "e1":
-                # TODO: inputs
                 fuel = input("Enter fuel: ")
-                horse_power = float(input("Enter horse power: "))
+                horse_power = input("Enter horse power: ")
                 torque = input("Enter torque: ")
                 displacement = input("Enter displacement: ")
-                number_cylinders = float(input("Enter number cylinders: "))
+                number_cylinders = input("Enter number cylinders: ")
                 starting_system = input("Enter starting system: ")
                 dry_weight = input("Enter dry weight: ")
                 manufacturer = input("Enter manufacturer: ")
@@ -80,27 +78,29 @@ def main():
 
 
             case "c1":
-                
                 color_name = input("Enter color: ")
-                RGB = input("Enter color RGB: ")
                 
-                new_color = Color(color_name, RGB)
-                list_of_colors.append(new_color)  # noqa: F823
-                print("New color added!")
+                r = int(input("Enter red component (0-255): "))
+                g = int(input("Enter green component (0-255): "))
+                b = int(input("Enter blue component (0-255): "))
+               
+                if 0 <= r <= 255 and 0 <= g <= 255 and 0 <= b <= 255:
+                    new_color = Color(color_name, r, g, b)  
+                    list_of_colors.append(new_color)  
+                    print("New color added!")
 
             case "c2":
                 print_list(list_of_colors)
 
 
             case "v1":
-                # TODO: inputs
                 owner = input("Enter owner: ")
                 color = input("Enter color: ")
                 engine = input("Enter engine: ")
                 brand = input("Enter brand: ")
                 model = input("Enter model: ")
-                consumption = float(input("Enter consumption: "))
-                kms = float(input("Enter kms: "))
+                consumption = input("Enter consumption: ")
+                kms = input("Enter kms: ")
                 
                 new_car = Car(owner, color, engine, brand, model, consumption, kms)
                 list_of_cars.append(new_car)
@@ -110,24 +110,44 @@ def main():
                 print_list(list_of_cars)
 
             case "s":
+                with open("persons_list.pkl", "wb") as f:
+                    pickle.dump(list_of_persons, f)
+                    
+                with open("engines_list.pkl", "wb") as f:
+                    pickle.dump(list_of_engines, f)
+                    
                 with open("colors_list.pkl", "wb") as f:
                     pickle.dump(list_of_colors, f)
-
+                    
+                with open("cars_list.pkl", "wb") as f:
+                    pickle.dump(list_of_cars, f)                   
+                    
+                    
             case "l":
+                with open("persons_list.pkl", "rb") as f:
+                    list_of_persons = pickle.load(f)
+                print_list(list_of_persons)
+                
+                with open("engines_list.pkl", "rb") as f:
+                    list_of_engines = pickle.load(f)
+                print_list(list_of_engines)
+                
                 with open("colors_list.pkl", "rb") as f:
                     list_of_colors = pickle.load(f)
                 print_list(list_of_colors)
+                
+                with open("cars_list.pkl", "rb") as f:
+                    list_of_cars = pickle.load(f)
+                print_list(list_of_cars)                
 
 
 def print_list(list_of):
-    # TODO: improve listing
-    print(list(enumerate(list_of)))
+    for idx, item in enumerate(list_of):
+        print(f"{idx}: {item}")
 
 
 def ask_id(msg, input_list):
-    # TODO: validate returned id
     print_list(input_list)
-
     return int(input(msg))
 
 
@@ -138,8 +158,8 @@ def new_car():
 
     brand = input("Enter the car brand: ")
     model = input("Enter the car model: ")
-    consumption = float(input("Enter the fuel consumption (km/l): "))
-    kms = float(input("Enter the current kilometers on the car: "))
+    consumption = input("Enter the fuel consumption (km/l): ")
+    kms = input("Enter the current kilometers on the car: ")
     
     new_car = Car(
         owner=list_of_persons[person_id],
@@ -154,6 +174,6 @@ def new_car():
     list_of_cars.append(new_car)
     print("New car added!")
 
-# Only runs if this file is executed directly
+
 if __name__ == "__main__":
     main()
