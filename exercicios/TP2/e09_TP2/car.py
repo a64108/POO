@@ -24,7 +24,7 @@ class Car:
     
     @property
     def owner(self):
-        """Retorna o dono do carro."""
+        """Retorna o owner do veiculo."""
         print('Getter: Owner Acedido')
         return self.__owner
 
