@@ -1,0 +1,29 @@
+# superclass
+class Person():
+    def __init__(self, per_name, per_age):
+        self.name = per_name
+        self.age = per_age
+
+    @property
+    def get_name(self):
+        return self.name
+
+    @property
+    def get_age(self):
+        return self.age
+
+# subclass		
+class Employee(Person):
+    def __init__(self, emp_name, emp_age, emp_salary):
+        super().__init__(emp_name, emp_age)
+        self.salary = emp_salary
+
+    @property
+    def get_salary(self):
+        return self.salary
+
+per = Person("John", 20)
+print("name:", per.get_name, "age:", per.get_age)
+
+emp = Employee("John", 20, 8000)
+print("name:", emp.get_name, "age:", emp.get_age, "salary:", emp.get_salary)
