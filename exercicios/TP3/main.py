@@ -124,78 +124,17 @@ def main():
                 print_list(list_of_fornecedor)
 
 
-            case "c1":
-                color_name = input("Enter color: ")
+            case "e1":
+                codigo_setor = input("Introduzir Codigo de Setor: ")
+                salario_base = input("Introduzir Salario Base:")
+                imposto = input("Introduzir Imposto (0 - 1): ")
                 
-                r = int(input("Enter red component (0-255): "))
-                g = int(input("Enter green component (0-255): "))
-                b = int(input("Enter blue component (0-255): "))
-               
-                if 0 <= r <= 255 and 0 <= g <= 255 and 0 <= b <= 255:
-                    new_color = Color(color_name, r, g, b)  
-                    list_of_colors.append(new_color)  
-                    print("New color added!")
-
-            case "c2":
-                print_list(list_of_colors)
-
-
-            case "v1":
-                owner = input("Enter owner: ")
-                color = input("Enter color: ")
-                engine = input("Enter engine: ")
-                brand = input("Enter brand: ")
-                model = input("Enter model: ")
-                consumption = input("Enter consumption: ")
-                kms = input("Enter kms: ")
+                new_empregado = Empregado(codigo_setor, salario_base, imposto)
+                list_of_empregado.append(new_empregado)
+                print("Novo Empregado Adiicionado!")
                 
-                new_car = Car(owner, color, engine, brand, model, consumption, kms)
-                list_of_cars.append(new_car)
-                print("New car added!")
-
-            case "v2":
-                print_list(list_of_cars)
-
-            case "s":
-                with open("persons_list.pkl", "wb") as f:
-                    pickle.dump(list_of_persons, f)
-                    
-                with open("engines_list.pkl", "wb") as f:
-                    pickle.dump(list_of_engines, f)
-                    
-                with open("colors_list.pkl", "wb") as f:
-                    pickle.dump(list_of_colors, f)
-                    
-                with open("cars_list.pkl", "wb") as f:
-                    pickle.dump(list_of_cars, f)                   
-                    
-                    
-            case "l":
-                with open("persons_list.pkl", "rb") as f:
-                    list_of_persons = pickle.load(f)
-                print_list(list_of_persons)
-                
-                with open("engines_list.pkl", "rb") as f:
-                    list_of_engines = pickle.load(f)
-                print_list(list_of_engines)
-                
-                with open("colors_list.pkl", "rb") as f:
-                    list_of_colors = pickle.load(f)
-                print_list(list_of_colors)
-                
-                with open("cars_list.pkl", "rb") as f:
-                    list_of_cars = pickle.load(f)
-                print_list(list_of_cars)                
-
-
-def print_list(list_of):
-    for idx, item in enumerate(list_of):
-        print(f"{idx}: {item}")
-
-
-def ask_id(msg, input_list):
-    print_list(input_list)
-    return int(input(msg))
+            case "e2":
+                print_list(list_of_empreagado)
 
 
 def new_car():
