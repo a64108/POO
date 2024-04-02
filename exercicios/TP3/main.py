@@ -63,7 +63,7 @@ from operario import Operario
 
 list_of_pessoa = []
 list_of_fornecedor = []
-list_of_empreagado = []
+list_of_empregado = []
 list_of_operario = []
 list_of_adminstrador = []
 
@@ -71,7 +71,7 @@ list_of_adminstrador = []
 def main():
     list_of_pessoa = []
     list_of_fornecedor = []
-    list_of_empreagado = []
+    list_of_empregado = []
     list_of_operario = []
     list_of_adminstrador = []
 
@@ -134,31 +134,74 @@ def main():
                 print("Novo Empregado Adiicionado!")
                 
             case "e2":
-                print_list(list_of_empreagado)
+                print_list(list_of_empregado)
 
 
-def new_car():
-    person_id = ask_id("Person id? ", list_of_persons)
-    color_id = ask_id("What is the Color? ", list_of_colors)
-    engine_id = ask_id("Engine id? ", list_of_engines)
+            case "o1":
+                valor_producao = input("Introduzir Valor de Produção: ")
+                valor_comissao = input("Introduzir valor de Comissão: ")
 
-    brand = input("Enter the car brand: ")
-    model = input("Enter the car model: ")
-    consumption = input("Enter the fuel consumption (km/l): ")
-    kms = input("Enter the current kilometers on the car: ")
-    
-    new_car = Car(
-        owner=list_of_persons[person_id],
-        color=list_of_colors[color_id],
-        engine=list_of_engines[engine_id],
-        brand=brand,
-        model=model,
-        consumption=consumption,
-        kms=kms,
-    )
+                new_operario = Operario(valor_producao, valor_comissao)
+                list_of_operario.append(new_operario)
+                print("Novo Operário Adicionado!")
+            
+            case "o2":
+                print_list(list_of_operario)
+            
 
-    list_of_cars.append(new_car)
-    print("New car added!")
+            case "a1":
+                ajuda_de_custo = input("Introduzir Ajuda de Custo: ")
+
+                new_administrador = Administrador(ajuda_de_custo)
+                list_of_adminstrador.append(new_administrador)
+                print("Novo Administrador Adicionado!")
+            
+            case "a2":
+                print_list(list_of_adminstrador)
+
+
+            case "s":
+                with open("pessoa_list.pkl", "wb") as f:
+                    pickle.dump(list_of_pessoa, f)
+                
+                with open("fornecedor_list.pkl", "wb") as f:
+                    pickle.dump(list_of_fornecedor, f)
+
+                with open("empregado_list.pkl", "wb") as f:
+                    pickle.dump(list_of_empregado, f)
+                
+                with open("operario_list.pkl", "wb") as f:
+                    pickle.dump(list_of_operario, f)
+
+                with open("adminstrador_list.pkl", "wb") as f:
+                    pickle.dump(list_of_adminstrador, f)
+                             
+                    
+            case "l":
+                with open("pessoa_list.pkl", "rb") as f:
+                    list_of_pessoa = pickle.load(f)
+                print_list(list_of_pessoa)
+
+                with open("forncedor_list.pkl", "rb") as f:
+                    list_of_fornecedor = pickle.load(f)
+                print_list(list_of_fornecedor)
+
+                with open("empregado_list.pkl", "rb") as f:
+                    list_of_empregado = pickle.load(f)
+                print_list(list_of_empregado)
+
+                with open("operario_list.pkl", "rb") as f:
+                    list_of_operario = pickle.load(f)
+                print_list(list_of_operario)
+
+                with open("adminstrador_list.pkl", "rb") as f:
+                    list_of_adminstrador = pickle.load(f)
+                print_list(list_of_adminstrador)
+                
+
+def print_list(list_of):
+    for idx, item in enumerate(list_of):
+        print(f"{idx}: {item}")
 
 
 if __name__ == "__main__":
