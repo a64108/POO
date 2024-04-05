@@ -122,7 +122,10 @@ def main():
 
             case "f2":
                 print_list(list_of_fornecedor)
-
+                
+                valor_fornecedor = valor_credito - valor_divida
+                print(f"Valor Total do Fornecedor: {valor_fornecedor} ")
+                
 
             case "e1":
                 codigo_setor = input("Introduzir Codigo de Setor: ")
@@ -131,15 +134,19 @@ def main():
                 
                 new_empregado = Empregado(codigo_setor, salario_base, imposto)
                 list_of_empregado.append(new_empregado)
-                print("Novo Empregado Adiicionado!")
+                print("Novo Empregado Adicionado!")
                 
             case "e2":
                 print_list(list_of_empregado)
+                
+                salario_total_empregado = salario_base * imposto
+                salario_total_empregado_formatado = format(salario_total_empregado, '.2f')
+                print(f"Salário Total após Imposto: {salario_total_empregado_formatado}")
 
 
             case "o1":
                 valor_producao = input("Introduzir Valor de Produção: ")
-                valor_comissao = input("Introduzir valor de Comissão: ")
+                valor_comissao = input("Introduzir valor de Comissão: (0 - 1) ")
 
                 new_operario = Operario(valor_producao, valor_comissao)
                 list_of_operario.append(new_operario)
@@ -147,6 +154,14 @@ def main():
             
             case "o2":
                 print_list(list_of_operario)
+                
+                comissao = valor_producao * valor_comissao
+                comissao_formatado = format(comissao, '.2f')
+                print(f"Valor da Comissão Total: {comissao_formatado}")
+                
+                calcular_salario_operario =  (comissao_formatado + salario_base) * imposto
+                calcular_salario_operario_formatado = format(calcular_salario_operario, '.2f')
+                print(f"Salário Total com Imposto e Comissão: {calcular_salario_operario_formatado}")
             
 
             case "a1":
@@ -158,6 +173,10 @@ def main():
             
             case "a2":
                 print_list(list_of_adminstrador)
+                
+                salario_total_administrador = (salario_base + ajuda_de_custo) * imposto
+                salario_total_administrador_formatado = format(salario_total_administrador, '.2f')
+                print(f"Salário Total após Imposto: {salario_total_administrador_formatado}")
 
 
             case "s":
@@ -182,7 +201,7 @@ def main():
                     list_of_pessoa = pickle.load(f)
                 print_list(list_of_pessoa)
 
-                with open("forncedor_list.pkl", "rb") as f:
+                with open("fornecedor_list.pkl", "rb") as f:
                     list_of_fornecedor = pickle.load(f)
                 print_list(list_of_fornecedor)
 
