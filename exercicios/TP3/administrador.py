@@ -33,3 +33,4 @@ class Administrador(Empregado):
   
 if __name__ == "__main__":
     Administrador(Empregado)
+

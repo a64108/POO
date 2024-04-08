@@ -75,4 +75,6 @@ class Pessoa():
         return f"Nome: {self.nome}, Morada: {self.morada}, Telefone: {self.telefone}" 
   
 if __name__ == "__main__":
-    Pessoa()
+
+    pessoa = Pessoa("Zé Dias", "Rua 123 ABC", "987654321")
+    print(f"Pessoa: {pessoa}")

@@ -1,12 +1,18 @@
 from pessoa import Pessoa
 
 class Empregado(Pessoa):
-    def __init__ (self, codigo_setor, salario_base, imposto):
-    
+    def __init__ (self, codigo_setor, salario_base, imposto, pessoa):
+        super().__init__(pessoa.nome, pessoa.morada, pessoa.telefone)
+
         self.codigo_setor = codigo_setor
         self.salario_base = salario_base
         self.imposto = imposto
+        self.salario_empregado = self.calcular_salario_empregado()
 
+    def calcular_salario_empregado(self):
+        salario_empregado = self.salario_base - (self.salario_base * self.imposto)
+        salario_empregado = format(salario_empregado, '.2f')
+        return salario_empregado
 
 # Getter, setter e deleter de codigo do setor
 
@@ -70,8 +76,10 @@ class Empregado(Pessoa):
 
 
     def __str__(self): 
-        return f"Codigo do Setor: {self.codgio_setor}, Salario Base: {self.salario_base}, Imposto: {self.imposto}" 
+        return f"Codigo do Setor: {self.codigo_setor}, Salario Base: {self.salario_base}, Imposto: {self.imposto}, Salário Empregado: {self.calcular_salario_empregado()}"
   
 if __name__ == "__main__":
-    Empregado(Pessoa)
 
+    pessoa = Pessoa("Zé Dias", "Rua 123 ABC", "987654321")
+    empregado = Empregado("113", 1000, 0.2, pessoa)
+    print(f"Empregado: {empregado}")
