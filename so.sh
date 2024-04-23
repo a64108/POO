@@ -8,7 +8,7 @@ DIALOG=${DIALOG=dialog}
 
 # Function to check password
 check_password() {
-    local password="1234"  # Change this to your desired password
+    local password="your_password_here"  # Change this to your desired password
     local entered_password
 
     entered_password=$($DIALOG --clear \
@@ -33,14 +33,14 @@ main_menu() {
             15 40 5 \
             1 "Create Directory" \
             2 "Copy Files" \
-            3 "Delete Multiple Files" \
+            3 "Delete Folder" \
             4 "Rename File" \
             2>&1 >/dev/tty)
 
         case "$choice" in
             1) create_directory ;;
             2) copy_files ;;
-            3) delete_multiple_files ;;
+            3) delete_folder ;;
             4) rename_file ;;
             *) exit ;;
         esac
@@ -79,19 +79,17 @@ copy_files() {
     fi
 }
 
-# Function to delete multiple files
-delete_multiple_files() {
-    local dir
-    local files
-    dir=$($DIALOG --title "Delete Multiple Files" --inputbox "Enter directory to delete files from:" 10 30 2>&1 >/dev/tty)
-    files=$($DIALOG --title "Delete Multiple Files" --inputbox "Enter file(s) to delete (separated by spaces):" 10 50 2>&1 >/dev/tty)
-    
-    if [ -n "$dir" ] && [ -n "$files" ]; then
-        rm -f $dir/{$files}
+# Function to delete folder
+delete_folder() {
+    local folder
+    folder=$($DIALOG --title "Delete Folder" --inputbox "Enter folder to delete:" 10 30 2>&1 >/dev/tty)
+
+    if [ -n "$folder" ]; then
+        rm -rf "$folder"
         if [ $? -eq 0 ]; then
-            $DIALOG --title "Success" --msgbox "Files deleted successfully from '$dir'." 10 30
+            $DIALOG --title "Success" --msgbox "Folder '$folder' deleted successfully." 10 30
         else
-            $DIALOG --title "Error" --msgbox "Failed to delete files." 10 30
+            $DIALOG --title "Error" --msgbox "Failed to delete folder." 10 30
         fi
     fi
 }
