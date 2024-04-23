@@ -6,6 +6,23 @@ command -v dialog >/dev/null 2>&1 || { echo >&2 "Dialog is required but not inst
 # Define dialog command options
 DIALOG=${DIALOG=dialog}
 
+# Function to check password
+check_password() {
+    local password="1234"  # Change this to your desired password
+    local entered_password
+
+    entered_password=$($DIALOG --clear \
+        --title "Password Required" \
+        --passwordbox "Enter your password:" 10 30 2>&1 >/dev/tty)
+
+    if [ "$entered_password" != "$password" ]; then
+        $DIALOG --clear \
+            --title "Incorrect Password" \
+            --msgbox "Incorrect password. Exiting." 10 30
+        exit 1
+    fi
+}
+
 # Main menu function
 main_menu() {
     local choice
@@ -62,7 +79,7 @@ copy_files() {
     fi
 }
 
-# Function to delete files
+# Function to delete multiple files
 delete_multiple_files() {
     local dir
     local files
@@ -97,6 +114,9 @@ rename_file() {
         fi
     fi
 }
+
+# Check password
+check_password
 
 # Execute main menu
 main_menu
