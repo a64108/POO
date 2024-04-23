@@ -16,17 +16,15 @@ main_menu() {
             15 40 5 \
             1 "Create Directory" \
             2 "Copy Files" \
-            3 "Delete Files" \
+            3 "Delete Multiple Files" \
             4 "Rename File" \
-            5 "Option 5" \
             2>&1 >/dev/tty)
 
         case "$choice" in
             1) create_directory ;;
             2) copy_files ;;
-            3) delete_files ;;
+            3) delete_multiple_files ;;
             4) rename_file ;;
-            5) option_5 ;;
             *) exit ;;
         esac
     done
@@ -65,21 +63,18 @@ copy_files() {
 }
 
 # Function to delete files
-delete_files() {
+delete_multiple_files() {
     local dir
-    dir=$($DIALOG --title "Delete Files" --inputbox "Enter directory to delete files from:" 10 30 2>&1 >/dev/tty)
-
-    if [ -n "$dir" ]; then
-        local files
-        files=$($DIALOG --title "Delete Files" --inputbox "Enter file(s) to delete (separated by spaces):" 10 50 2>&1 >/dev/tty)
-        
-        if [ -n "$files" ]; then
-            rm -f $dir/{$files}
-            if [ $? -eq 0 ]; then
-                $DIALOG --title "Success" --msgbox "Files deleted successfully from '$dir'." 10 30
-            else
-                $DIALOG --title "Error" --msgbox "Failed to delete files." 10 30
-            fi
+    local files
+    dir=$($DIALOG --title "Delete Multiple Files" --inputbox "Enter directory to delete files from:" 10 30 2>&1 >/dev/tty)
+    files=$($DIALOG --title "Delete Multiple Files" --inputbox "Enter file(s) to delete (separated by spaces):" 10 50 2>&1 >/dev/tty)
+    
+    if [ -n "$dir" ] && [ -n "$files" ]; then
+        rm -f $dir/{$files}
+        if [ $? -eq 0 ]; then
+            $DIALOG --title "Success" --msgbox "Files deleted successfully from '$dir'." 10 30
+        else
+            $DIALOG --title "Error" --msgbox "Failed to delete files." 10 30
         fi
     fi
 }
@@ -101,11 +96,6 @@ rename_file() {
             $DIALOG --title "Error" --msgbox "Failed to rename file." 10 30
         fi
     fi
-}
-
-# Option 5 function
-option_5() {
-    $DIALOG --title "Option 5" --msgbox "You chose Option 5." 10 30
 }
 
 # Execute main menu
