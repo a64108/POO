@@ -96,9 +96,9 @@ renomear_ficheiro() {
     local dir
     local nome_antigo
     local novo_nome
-    dir=$($DIALOG --title "Rename File" --inputbox "Enter directory containing the file:" 10 30 2>&1 >/dev/tty)
-    nome_antigo=$($DIALOG --title "Rename File" --inputbox "Enter current name of the file:" 10 30 2>&1 >/dev/tty)
-    novo_nome=$($DIALOG --title "Rename File" --inputbox "Enter new name of the file:" 10 30 2>&1 >/dev/tty)
+    dir=$($DIALOG --title "Renomear Ficheiro" --inputbox "Introduzir path da diretoria do ficheiro:" 10 30 2>&1 >/dev/tty)
+    nome_antigo=$($DIALOG --title "Renomear Ficheiro" --inputbox "Introduzir nome atual do ficheiro:" 10 30 2>&1 >/dev/tty)
+    novo_nome=$($DIALOG --title "Renomear Ficheiro" --inputbox "Introduzir novo nome do ficheiro:" 10 30 2>&1 >/dev/tty)
 
     if [ -n "$dir" ] && [ -n "$nome_antigo" ] && [ -n "$novo_nome" ]; then
         mv "$dir/$nome_antigo" "$dir/$novo_nome"
