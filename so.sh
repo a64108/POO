@@ -1,120 +1,117 @@
 #!/bin/bash
 
-# Ensure dialog is installed
-command -v dialog >/dev/null 2>&1 || { echo >&2 "Dialog is required but not installed. Aborting."; exit 1; }
-
-# Define dialog command options
+# Define opçoes do comando dialog
 DIALOG=${DIALOG=dialog}
 
-# Function to check password
-check_password() {
-    local password="your_password_here"  # Change this to your desired password
-    local entered_password
+# Função para verificar password
+verificar_password() {
+    local password="123"  # MUDAR PASSWORD AQUI
+    local password_introduzida
 
-    entered_password=$($DIALOG --clear \
-        --title "Password Required" \
-        --passwordbox "Enter your password:" 10 30 2>&1 >/dev/tty)
+    password_introduzida=$($DIALOG --clear \
+        --title "Necessita Password" \
+        --passwordbox "Introduzir password:" 10 30 2>&1 >/dev/tty)
 
-    if [ "$entered_password" != "$password" ]; then
+    if [ "$password_introduzida" != "$password" ]; then
         $DIALOG --clear \
-            --title "Incorrect Password" \
-            --msgbox "Incorrect password. Exiting." 10 30
+            --title "Password Incorreta" \
+            --msgbox "Password Incorreta. Saindo da Aplicação" 10 30
         exit 1
     fi
 }
 
-# Main menu function
+# Menu Principal
 main_menu() {
-    local choice
+    local escolha
     while true; do
-        choice=$($DIALOG --clear \
-            --title "Main Menu" \
-            --menu "Choose an option:" \
+        escolha=$($DIALOG --clear \
+            --title "Menu Principal" \
+            --menu "Escolher a ferramenta:" \
             15 40 5 \
-            1 "Create Directory" \
-            2 "Copy Files" \
-            3 "Delete Folder" \
-            4 "Rename File" \
+            1 "Criar Diretoria" \
+            2 "Copiar Ficheiros" \
+            3 "Apagar Ficheiros" \
+            4 "Renomear Ficheiros" \
             2>&1 >/dev/tty)
 
-        case "$choice" in
-            1) create_directory ;;
-            2) copy_files ;;
-            3) delete_folder ;;
-            4) rename_file ;;
+        case "$escolha" in
+            1) criar_diretoria ;;
+            2) copiar_ficheiros ;;
+            3) apagar_pastas ;;
+            4) renomear_ficheiro ;;
             *) exit ;;
         esac
     done
 }
 
-# Function to create directory
-create_directory() {
-    local dir_name
-    dir_name=$($DIALOG --title "Create Directory" --inputbox "Enter directory name:" 10 30 2>&1 >/dev/tty)
+# Funcao para criar diretoria
+criar_diretoria() {
+    local dir_nome
+    dir_nome=$($DIALOG --title "Criar Diretoria" --inputbox "Introduzir nome da diretoria:" 10 30 2>&1 >/dev/tty)
 
-    if [ -n "$dir_name" ]; then
-        mkdir -p "$dir_name"
+    if [ -n "$dir_nome" ]; then
+        mkdir -p "$dir_nome"
         if [ $? -eq 0 ]; then
-            $DIALOG --title "Success" --msgbox "Directory '$dir_name' created successfully." 10 30
+            $DIALOG --title "Sucesso!" --msgbox "Diretoria '$dir_nome' criada com sucesso." 10 30
         else
-            $DIALOG --title "Error" --msgbox "Failed to create directory." 10 30
+            $DIALOG --title "Erro!" --msgbox "Erro ao criar diretoria." 10 30
         fi
     fi
 }
 
-# Function to copy files
-copy_files() {
-    local source_dir
-    local dest_dir
-    source_dir=$($DIALOG --title "Copy Files" --inputbox "Enter source directory:" 10 30 2>&1 >/dev/tty)
-    dest_dir=$($DIALOG --title "Copy Files" --inputbox "Enter destination directory:" 10 30 2>&1 >/dev/tty)
+# Funcao para copiar ficheiros
+copiar_ficheiros() {
+    local base_dir
+    local nova_dir
+    base_dir=$($DIALOG --title "Copiar Ficheiros" --inputbox "Introduzir path da diretoria:" 10 30 2>&1 >/dev/tty)
+    nova_dir=$($DIALOG --title "Copy Files" --inputbox "Introduzir o path da diretoria de destino:" 10 30 2>&1 >/dev/tty)
 
-    if [ -n "$source_dir" ] && [ -n "$dest_dir" ]; then
-        cp -r "$source_dir"/* "$dest_dir"
+    if [ -n "$base_dir" ] && [ -n "$nova_dir" ]; then
+        cp -r "$base_dir"/* "$nova_dir"
         if [ $? -eq 0 ]; then
-            $DIALOG --title "Success" --msgbox "Files copied successfully from '$source_dir' to '$dest_dir'." 10 30
+            $DIALOG --title "Sucesso!" --msgbox "Ficheiros de '$base_dir' para '$nova_dir' foram compiados com sucesso." 10 30
         else
-            $DIALOG --title "Error" --msgbox "Failed to copy files." 10 30
+            $DIALOG --title "Erro!" --msgbox "Erro ao copiar os ficheiros." 10 30
         fi
     fi
 }
 
-# Function to delete folder
-delete_folder() {
-    local folder
-    folder=$($DIALOG --title "Delete Folder" --inputbox "Enter folder to delete:" 10 30 2>&1 >/dev/tty)
+# Funcao para apagar pastas
+apagar_pastas() {
+    local pasta
+    pasta=$($DIALOG --title "Apagar Pastas" --inputbox "Introduzir nome da pasta:" 10 30 2>&1 >/dev/tty)
 
-    if [ -n "$folder" ]; then
-        rm -rf "$folder"
+    if [ -n "$pasta" ]; then
+        rm -rf "$pasta"
         if [ $? -eq 0 ]; then
-            $DIALOG --title "Success" --msgbox "Folder '$folder' deleted successfully." 10 30
+            $DIALOG --title "Sucesso!" --msgbox "Pasta '$pasta' apagada com sucesso." 10 30
         else
-            $DIALOG --title "Error" --msgbox "Failed to delete folder." 10 30
+            $DIALOG --title "Erro!" --msgbox "Falha ao apagar a pasta." 10 30
         fi
     fi
 }
 
-# Function to rename file
-rename_file() {
+# funçao para renomear ficheiros
+renomear_ficheiro() {
     local dir
-    local old_name
-    local new_name
+    local nome_antigo
+    local novo_nome
     dir=$($DIALOG --title "Rename File" --inputbox "Enter directory containing the file:" 10 30 2>&1 >/dev/tty)
-    old_name=$($DIALOG --title "Rename File" --inputbox "Enter current name of the file:" 10 30 2>&1 >/dev/tty)
-    new_name=$($DIALOG --title "Rename File" --inputbox "Enter new name of the file:" 10 30 2>&1 >/dev/tty)
+    nome_antigo=$($DIALOG --title "Rename File" --inputbox "Enter current name of the file:" 10 30 2>&1 >/dev/tty)
+    novo_nome=$($DIALOG --title "Rename File" --inputbox "Enter new name of the file:" 10 30 2>&1 >/dev/tty)
 
-    if [ -n "$dir" ] && [ -n "$old_name" ] && [ -n "$new_name" ]; then
-        mv "$dir/$old_name" "$dir/$new_name"
+    if [ -n "$dir" ] && [ -n "$nome_antigo" ] && [ -n "$novo_nome" ]; then
+        mv "$dir/$nome_antigo" "$dir/$novo_nome"
         if [ $? -eq 0 ]; then
-            $DIALOG --title "Success" --msgbox "File renamed successfully in '$dir'." 10 30
+            $DIALOG --title "Sucesso!" --msgbox "Ficheiro renomeado com sucesso em '$dir'." 10 30
         else
-            $DIALOG --title "Error" --msgbox "Failed to rename file." 10 30
+            $DIALOG --title "Erro!" --msgbox "Falha ao renomear o ficheiro." 10 30
         fi
     fi
 }
 
-# Check password
-check_password
+# verificar password
+verificar_password
 
 # Execute main menu
 main_menu
