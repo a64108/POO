@@ -44,15 +44,17 @@ main_menu() {
     done
 }
 
-# Funcao para criar diretoria
 criar_diretoria() {
+    local dir_path
     local dir_nome
+
+    dir_path=$($DIALOG --title "Criar Diretoria" --inputbox "Introduzir caminho para a diretoria:" 10 30 2>&1 >/dev/tty)
     dir_nome=$($DIALOG --title "Criar Diretoria" --inputbox "Introduzir nome da diretoria:" 10 30 2>&1 >/dev/tty)
 
-    if [ -n "$dir_nome" ]; then
-        mkdir -p "$dir_nome"
+    if [ -n "$dir_nome" ] && [ -n "$dir_path" ]; then
+        mkdir -p "$dir_path/$dir_nome"
         if [ $? -eq 0 ]; then
-            $DIALOG --title "Sucesso!" --msgbox "Diretoria '$dir_nome' criada com sucesso." 10 30
+            $DIALOG --title "Sucesso!" --msgbox "Diretoria '$dir_nome' criada com sucesso em $dir_path." 10 30
         else
             $DIALOG --title "Erro!" --msgbox "Erro ao criar diretoria." 10 30
         fi
@@ -63,18 +65,20 @@ criar_diretoria() {
 copiar_ficheiros() {
     local base_dir
     local nova_dir
-    base_dir=$($DIALOG --title "Copiar Ficheiros" --inputbox "Introduzir path da diretoria:" 10 30 2>&1 >/dev/tty)
-    nova_dir=$($DIALOG --title "Copy Files" --inputbox "Introduzir o path da diretoria de destino:" 10 30 2>&1 >/dev/tty)
+
+    base_dir=$($DIALOG --title "Copiar Ficheiros" --inputbox "Introduzir caminho da diretoria de origem:" 10 30 2>&1 >/dev/tty)
+    nova_dir=$($DIALOG --title "Copiar Ficheiros" --inputbox "Introduzir caminho da diretoria de destino:" 10 30 2>&1 >/dev/tty)
 
     if [ -n "$base_dir" ] && [ -n "$nova_dir" ]; then
-        cp -r "$base_dir"/* "$nova_dir"
+        cp -r "$base_dir" "$nova_dir"  # Uso de -r para copiar ficheiros recursivamente
         if [ $? -eq 0 ]; then
-            $DIALOG --title "Sucesso!" --msgbox "Ficheiros de '$base_dir' para '$nova_dir' foram compiados com sucesso." 10 30
+            $DIALOG --title "Sucesso!" --msgbox "Ficheiros de '$base_dir' para '$nova_dir' foram copiados com sucesso." 10 30
         else
             $DIALOG --title "Erro!" --msgbox "Erro ao copiar os ficheiros." 10 30
         fi
     fi
 }
+
 
 # Funcao para apagar pastas
 apagar_pastas() {
@@ -110,8 +114,8 @@ renomear_ficheiro() {
     fi
 }
 
-# verificar password
+# verificar password primeiro
 verificar_password
 
-# Execute main menu
+# Executar main menu se palavra passe esta certa
 main_menu
