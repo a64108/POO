@@ -1,0 +1,55 @@
+<!--
+UALG - 2023/2024
+Disciplina - POO
+a64108 - André Vieira
+-->
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Sensor Data</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <h1>Dados dos Sensores</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>idReading</th>
+                <th>Sensor Name</th>
+                <th>Timestamp</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody id="sensor-data">
+            <!-- Dados do data.php sao colocados aqui -->
+        </tbody>
+    </table>
+    <script>
+        function fetchSensorData() {
+            fetch('/api/sensors')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('sensor-data');
+                    tableBody.innerHTML = '';
+                    data.forEach(row => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${row.idReading}</td>
+                            <td>${row.sensorName}</td>
+                            <td>${row.timestamp}</td>
+                            <td>${row.value}</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+                })
+                .catch(error => console.error('Erro a ir buscar dados dos sensores:', error));
+        }
+    
+        window.onload = fetchSensorData;
+    </script>
+    
+</body>
+</html>

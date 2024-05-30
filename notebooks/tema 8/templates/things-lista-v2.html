@@ -1,0 +1,17 @@
+{# templates/things-lista-v2.html #}
+<!DOCTYPE html>
+{% extends "base.html" %}
+{# https://jinja.palletsprojects.com/en/3.0.x/templates/#template-inheritance #}
+
+{% block _title_ %}
+    {{ title }}
+{% endblock _title_ %}
+
+{% block _content_ %}
+    {% for thing in things %}
+        <div>
+            <p>{{ thing.name }} located at {{ thing.local }} has sensors:</p>
+            {% for sensor in thing.sensors %}<div>{{ sensor.sensor_name }} ({{ sensor.units }})</div>{% endfor %}
+        </div>
+    {% endfor %}
+{% endblock _content_ %}

@@ -1,0 +1,32 @@
+{# templates/things-lista.html #}
+<!DOCTYPE html>
+
+{# isto é um comentario #}
+{# https://jinja.palletsprojects.com/en/3.0.x/templates/ #}
+{#
+    {{ }} - The tag marking the beginning/ending of a print statement.
+    {% %} - The tag marking the beginning/ending of a control block
+#}
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content="A simple example of a Flask app"/>
+        <meta name="keywords" content="Python, Flask, Example" />
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        <h1>Things:</h1>
+        {% for thing in things %}
+            <div>
+                <h2>{{ thing.name }}</h2>
+                <p>Localizado em {{ thing.local }}. Tem os sensores:</p>
+                {% for sensor in thing.sensors %}
+                    <div>
+                        {{ sensor.sensor_name }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </body>
+</html>

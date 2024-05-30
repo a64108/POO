@@ -1,6 +1,9 @@
-# jogo_abs.py
 """
-Interface de um jogo para 2 jogadores.
+UALG - 2023/2024
+Disciplina - POO
+a64108 - André Vieira
+
+Interface dado na aula
 """
 
 from abc import ABC, abstractmethod

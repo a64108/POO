@@ -1,0 +1,18 @@
+{# templates/base.html #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            {% block _title_ %} Title {% endblock %}
+        </title>
+    </head>
+    <body>
+        <hr/>
+        <div>
+            <a href="/index">Home</a> ...
+        </div>
+        <hr/>
+        {% block _content_ %}
+        {% endblock %}
+    </body>
+</html>

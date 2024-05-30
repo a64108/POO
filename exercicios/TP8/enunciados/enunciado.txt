@@ -1,0 +1,43 @@
+Considere a base de dados Sensors esquematizada na Figura 7.
+Para a criar, corra o Jupyter Notebook da Aula TP do Tema 7, na versão SQLite3 (POO-Tema7-03-SQLite.ipynb).
+
+Para interagir com a base de dados dentro do Visual Studio Code, sugere-se a instalação da extensão SQLite3 Editor, e/ou a utilização de um cliente de SQLite3, como o DB Browser for SQLite.
+
+Implemente um API/web service RESTful em Flask que exponha operações CRUD (e.g., métodos POST, GET, PUT/PATCH e DELETE), através de dados em formato JSON (i.e., Content-type: application/json), sobre a seguinte tabela da base de dados:
+
+Alert.
+
+Unit.
+
+Location.
+
+Sensor. [*]
+
+Reading.
+
+Para demonstrar o funcionamento do API/web service, crie um conjunto de testes de integração que permitam verificar o comportamento das operações CRUD implementadas. Pode utilizar uma das seguintes abordagens:
+
+Os módulos httpx e unittest do Python. [*]
+
+Utilize uma ferramenta para teste de web APIs, como o Hoppscotch ou o Postman.
+
+
+
+
+
+
+
+
+Considere a base de dados Sensors esquematizada na Figura 7. Para a criar, corra o Jupyter Notebook da Aula TP do Tema 7, na versão SQLite3 (POO-Tema7-03-SQLite.ipynb).
+
+Implemente uma pequena aplicação web, através de Flask e templates Jinja, para mostrar os dados presentes nas seguintes tabelas da base de dados:
+
+Alert.
+
+Unit.
+
+Location.
+
+Sensor. [*]
+
+Reading.
